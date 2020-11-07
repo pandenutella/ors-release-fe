@@ -8,6 +8,8 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import SimplePageWrapper from "./SimplePageWrapper";
 
 const LoginPage = (props) => {
+    const [form] = Form.useForm();
+
     const onFinish = (values) => {
         const account = getAccountUsingCredentials(values);
         if (account === undefined) {
@@ -16,6 +18,7 @@ const LoginPage = (props) => {
                 description:
                     "Your username or password is incorrect. Please try again.",
             });
+            form.resetFields();
 
             return;
         }
@@ -38,7 +41,11 @@ const LoginPage = (props) => {
 
     return (
         <SimplePageWrapper title="ORS Release">
-            <Form initialValues={{ remember: true }} onFinish={onFinish}>
+            <Form
+                form={form}
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+            >
                 <Form.Item
                     name="domainName"
                     rules={[
