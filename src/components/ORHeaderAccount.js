@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { logoutAccount } from "../actions/auth";
 
 import { Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
@@ -10,7 +11,7 @@ const ORHeaderAccount = (props) => {
     return (
         <Menu theme="light" mode="horizontal" style={{ float: "right" }}>
             <SubMenu icon={<UserOutlined />} title={props.account.domainName}>
-                <Menu.Item>Logout</Menu.Item>
+                <Menu.Item onClick={props.logoutAccount}>Logout</Menu.Item>
             </SubMenu>
         </Menu>
     );
@@ -18,6 +19,8 @@ const ORHeaderAccount = (props) => {
 
 const mapStateToProps = (state) => ({ account: state.auth.account });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+    logoutAccount: () => dispatch(logoutAccount()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ORHeaderAccount);
