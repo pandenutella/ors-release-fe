@@ -4,7 +4,8 @@ const initialAuth = {
     authenticated: false,
     account: null,
 };
-export default function accounts(state = initialAuth, action) {
+
+export default function auth(state = initialAuth, action) {
     switch (action.type) {
         case LOGIN_ACCOUNT:
             return { authenticated: true, account: action.payload };
