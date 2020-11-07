@@ -9,7 +9,7 @@ const { SubMenu } = Menu;
 
 const ORHeaderAccount = (props) => {
     return (
-        <Menu theme="light" mode="horizontal" style={{ float: "right" }}>
+        <Menu theme="light" mode="horizontal" className="header-menu">
             <SubMenu icon={<UserOutlined />} title={props.account.domainName}>
                 <Menu.Item onClick={props.logoutAccount}>Logout</Menu.Item>
             </SubMenu>

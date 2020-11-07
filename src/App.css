@@ -57,3 +57,29 @@
 .ant-layout-header.header {
     background: white;
 }
+
+.header .header-menu:first-child {
+    float: left;
+}
+
+.header .header-menu:nth-child(2) {
+    float: right;
+}
+
+.header .ant-menu-horizontal {
+    border-bottom: none;
+}
+
+.header-menu > .ant-menu-item:hover,
+.header-menu > .ant-menu-item-active,
+.header-menu .ant-menu-item.ant-menu-item-selected {
+    border-bottom-color: transparent !important;
+}
+
+.header-menu .ant-menu-item.ant-menu-item-selected {
+    color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.header-menu.ant-menu-horizontal > .ant-menu-item-selected a {
+    color: rgba(0, 0, 0, 0.85) !important;
+}
