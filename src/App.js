@@ -1,20 +1,18 @@
 import "./App.css";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";
+
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/">
-                    <HomePage />
-                </Route>
-                <Route path="/login">
-                    <LoginPage />
-                </Route>
+                <PrivateRoute exact path="/" component={HomePage} />
+                <Route path="/login" component={LoginPage} />
             </Switch>
         </BrowserRouter>
     );

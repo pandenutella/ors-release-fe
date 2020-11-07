@@ -29,6 +29,8 @@ const LoginPage = (props) => {
             message: "Login Successful",
             description: `Welcome ${account.firstName}!`,
         });
+
+        props.history.push("/");
     };
 
     const getAccountUsingCredentials = ({ domainName, password }) => {
