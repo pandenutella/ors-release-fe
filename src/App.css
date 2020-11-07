@@ -53,3 +53,7 @@
 .simple-page-wrapper-title {
     text-align: center;
 }
+
+.ant-layout-header.header {
+    background: white;
+}
