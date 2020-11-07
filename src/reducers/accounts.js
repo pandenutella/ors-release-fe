@@ -1,6 +1,6 @@
 const initialAccounts = [
     {
-        domainName: "bacaljo",
+        domainName: "BACALJO",
         password: "123",
         firstName: "John Emmanuel",
         lastName: "Bacalla",

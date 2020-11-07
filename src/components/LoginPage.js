@@ -36,7 +36,7 @@ const LoginPage = (props) => {
     const getAccountUsingCredentials = ({ domainName, password }) => {
         return props.accounts.find(
             (account) =>
-                account.domainName === domainName &&
+                account.domainName === domainName.toUpperCase() &&
                 account.password === password
         );
     };
