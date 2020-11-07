@@ -1,22 +1,50 @@
-import { Button, Form, Input } from "antd";
+import { connect } from "react-redux";
+
+import { loginAccount } from "../actions/auth";
+
+import { Button, Form, Input, notification } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 import SimplePageWrapper from "./SimplePageWrapper";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const onFinish = (values) => {
-        console.log(values);
+        const account = getAccountUsingCredentials(values);
+        if (account === undefined) {
+            notification.open({
+                message: "Login Failed",
+                description:
+                    "Your username or password is incorrect. Please try again.",
+            });
+
+            return;
+        }
+
+        props.loginAccount(account);
+
+        notification.open({
+            message: "Login Successful",
+            description: `Welcome ${account.firstName}!`,
+        });
+    };
+
+    const getAccountUsingCredentials = ({ domainName, password }) => {
+        return props.accounts.find(
+            (account) =>
+                account.domainName === domainName &&
+                account.password === password
+        );
     };
 
     return (
         <SimplePageWrapper title="ORS Release">
             <Form initialValues={{ remember: true }} onFinish={onFinish}>
                 <Form.Item
-                    name="username"
+                    name="domainName"
                     rules={[
                         {
                             required: true,
-                            message: "Please input your Username!",
+                            message: "Please input your Domain Name!",
                         },
                     ]}
                 >
@@ -24,7 +52,7 @@ const LoginPage = () => {
                         prefix={
                             <UserOutlined className="site-form-item-icon" />
                         }
-                        placeholder="Username"
+                        placeholder="Domain Name"
                     />
                 </Form.Item>
                 <Form.Item
@@ -55,4 +83,10 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+const mapStateToProps = (state) => ({ accounts: state.accounts });
+
+const mapDispatchToProps = (dispatch) => ({
+    loginAccount: (account) => dispatch(loginAccount(account)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
