@@ -10,12 +10,7 @@ import {
 
 export default function ORHeaderNavigation() {
     return (
-        <Menu
-            theme="light"
-            mode="horizontal"
-            defaultSelectedKeys={["1"]}
-            style={{ float: "left" }}
-        >
+        <Menu theme="light" mode="horizontal" style={{ float: "left" }}>
             <Menu.Item icon={<DashboardOutlined />} key="1">
                 <Link to="/">Dashboard</Link>
             </Menu.Item>
