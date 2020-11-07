@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Menu } from "antd";
 import {
@@ -16,13 +17,13 @@ export default function ORHeaderNavigation() {
             style={{ float: "left" }}
         >
             <Menu.Item icon={<DashboardOutlined />} key="1">
-                Dashboard
+                <Link to="/">Dashboard</Link>
             </Menu.Item>
             <Menu.Item icon={<AppstoreOutlined />} key="2">
-                Releases
+                <Link to="/releases">Releases</Link>
             </Menu.Item>
             <Menu.Item icon={<BlockOutlined />} key="3">
-                Stories
+                <Link to="/stories">Stories</Link>
             </Menu.Item>
         </Menu>
     );
